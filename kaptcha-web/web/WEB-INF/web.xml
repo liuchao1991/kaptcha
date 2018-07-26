@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
+         version="3.1">
+
+    <!-- Kaptcha验证码配置 -->
+    <servlet>
+        <servlet-name>Kaptcha</servlet-name>
+        <servlet-class>com.google.code.kaptcha.servlet.KaptchaServlet</servlet-class>
+        <init-param>
+            <param-name>kaptcha.border</param-name>
+            <param-value>no</param-value>
+        </init-param>
+        <init-param>
+            <param-name>kaptcha.border.color</param-name>
+            <param-value>105,179,90</param-value>
+        </init-param>
+        <init-param>
+            <param-name>kaptcha.textproducer.font.color</param-name>
+            <param-value>red</param-value>
+        </init-param>
+        <init-param>
+            <param-name>kaptcha.obscurificator.impl</param-name>
+            <param-value>com.google.code.kaptcha.impl.FishEyeGimpy</param-value>
+        </init-param>
+        <init-param>
+            <param-name>kaptcha.image.width</param-name>
+            <param-value>250</param-value>
+        </init-param>
+        <init-param>
+            <param-name>kaptcha.image.height</param-name>
+            <param-value>90</param-value>
+        </init-param>
+        <init-param>
+            <param-name>kaptcha.textproducer.font.size</param-name>
+            <param-value>70</param-value>
+        </init-param>
+        <init-param>
+            <!--String kaptchaExpected = (String) session.getAttribute(com.google.code.kaptcha.Constants.KAPTCHA_SESSION_KEY);
+            必须改成
+            String kaptchaExpected = (String) session.getAttribute("code");-->
+            <param-name>kaptcha.session.key</param-name>
+            <param-value>code</param-value>
+        </init-param>
+        <init-param>
+            <param-name>kaptcha.textproducer.char.length</param-name>
+            <param-value>4</param-value>
+        </init-param>
+        <init-param>
+            <param-name>kaptcha.textproducer.font.names</param-name>
+            <param-value>宋体,楷体,微软雅黑</param-value>
+        </init-param>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Kaptcha</servlet-name>
+        <url-pattern>/kaptcha</url-pattern>
+    </servlet-mapping>
+</web-app>
